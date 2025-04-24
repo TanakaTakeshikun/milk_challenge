@@ -43,7 +43,7 @@ module.exports = {
     const title = interaction.fields.getTextInputValue('title');
     const datas = await gcp.getRows({ type: 'userdata' });
     const num = datas.length + 1;
-    await interaction.editReply({ content: datas?.error ? datas?.error : `処理中...(データ取得)\n作者名:${author}\n作品作品タイトル:${title}\n作品に込めた思い:${description}\n作品番号:${num}`, flags: 64 });
+    await interaction.editReply({ content: datas?.error ? datas?.error : `処理中...(データ取得)\n作者名:${author}\n作品タイトル:${title}\n作品に込めた思い:${description}\n作品番号:${num}`, flags: 64 });
     const url = await gcp.save({ content: description, title: title, author: author, num: num, i: interaction });
     await interaction.editReply({ content: url?.error ? url?.error : `処理中...(データ保存)\n作者名:${author}\n作品タイトル:${title}\n作品に込めた思い:${description}\n作品番号:${num}`, flags: 64 });
     await gcp.set({ type: 'userdata', userId: interaction.user.id, userName: interaction.user.globalName, author: author, description: description, title: title, num: num, url: url });
