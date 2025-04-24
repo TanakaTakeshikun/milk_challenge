@@ -3,12 +3,12 @@ const { CustomEmbed } = require('../../libs');
 const setting = require('../../setting.json');
 module.exports = {
   name: Events.MessageCreate,
-  filter: (m) => m.channel.id === setting.bot.channelid && m.attachments.first(),
+  filter: (m) => m.channel.id === setting.bot.channelid && m.attachments.first() && !m.author.bot,
   async execute(message) {
     const attachments = message.attachments.map(x => x.url);
     const content = message.content;
-    const title = content.match(/作品タイトル[:：](.+)/)?.[1]?.trim()||""
-    const description = content.match(/作品に込めた思い[:：](.+)/)?.[1]?.trim()||""
+    const title = content.match(/作品タイトル[:：](.+)/)?.[1]?.trim() || ""
+    const description = content.match(/作品に込めた思い[:：](.+)/)?.[1]?.trim() || ""
     const author = content.match(/作者名[:：](.+)/)?.[1]?.trim() || message.author.globalName;
     const confirm_embed = new CustomEmbed()
       .setTitle(`✅${author}の投稿確認`)

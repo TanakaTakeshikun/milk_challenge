@@ -1,6 +1,3 @@
-if (typeof ReadableStream === 'undefined') {
-  global.ReadableStream = require('stream/web').ReadableStream;
-}
 process.env.TZ = 'Asia/Tokyo'
 globalThis.usertmp = new Map();
 const querystring = require("node:querystring");
