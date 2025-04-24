@@ -25,7 +25,7 @@ module.exports = {
     globalThis.usertmp.set(interaction.user.id, [attachment_1.url, attachment_2?.url, attachment_3?.url]);
     const submission_modal = new ModalBuilder()
       .setCustomId("submission_modal")
-      .setTitle("質問内容を入力してください");
+      .setTitle("投稿内容を入力してください");
     const author_Input = new TextInputBuilder()
       .setCustomId("author")
       .setLabel("作者名")
